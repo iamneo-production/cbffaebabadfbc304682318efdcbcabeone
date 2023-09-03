@@ -1,15 +1,203 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>tic_tac_toe</title>
-
-  <!-- link the style.css and app.js files -->
-
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<title>Document</title>-->
 </head>
+<style>
+    #header {
+        text-align: center;
+        color: #ffffff;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+        font-size: 50px;
+    }
+
+    .box-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: 35px;
+    }
+
+    .row {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .btn {
+        border: 2px solid #000;
+        border-radius: 10px;
+        width: 75px;
+        height: 75px;
+        font-size: 50px;
+        font-weight: 500;
+        text-align: center;
+        background-color: rgba(255, 255, 255, 0.8);
+        color: #333;
+        text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5);
+        /*cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.3s ease;*/
+    }
+
+    .btn:hover {
+        background-color: rgba(255, 255, 255, 0.95);
+        transform: scale(1.05);
+        cursor: pointer;
+    }
+
+    #reset:disabled {
+        color: black;
+        cursor: no-drop;
+    }
+
+    .result-container {
+        background-color: rgba(255, 255, 255, 0.8);
+        border: 1px solid #000;
+        text-align: center;
+        max-width: 200px;
+        margin: 0 auto;
+        padding: 10px;
+    }
+
+    .result {
+        color: #ffffff;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        font-size: 25px;
+    }
+
+    #reset {
+        border: 2px solid #000;
+        color: #000;
+        cursor: pointer;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+    #reset:hover {
+        background-color: #000;
+        color: #ffffff;
+    }
+</style>
+
 <body>
-  <!-- Enter your code here -->
+    <script>
+        var element = null;
+        var x = true;
+        var o = false;
+        var element1 = document.createElement("span");
+        /*function myfunction() {
+            var buttn = document.getElementById("r00");
+            if (x) {
+                element1.textContent = "X";
+                buttn.appendChild(element1);
+                element = element1;
+                buttn.disabled = true;
+                conditioncheck();
+                updateParagraph(element);
+                x = false;
+                o = true;
+            }
+            else if (o) {
+                element1.textContent = "O";
+                buttn.appendChild(element1);
+                element = element1;
+                buttn.disabled = true;
+                conditioncheck();
+                updateParagraph(element);
+                x = true;
+                o = false;
+            }
+            buttn.value = "X";*/
+            function myFunction(btnid) {
+                var button = document.getElementById(btnid);
+                if(x){
+                    button.value = "X";
+                    conditioncheck();
+                }
+                else{
+                    button.value = "O";
+                    conditioncheck();
+                }
+            }
+
+       // }
+        function conditioncheck() {
+            var r00 = document.getElementById("r00");
+            var r01 = document.getElementById("r01");
+            var r02 = document.getElementById("r02");
+            var r10 = document.getElementById("r10");
+            var r11 = document.getElementById("r11");
+            var r12 = document.getElementById("r12");
+            var r20 = document.getElementById("r20");
+            var r21 = document.getElementById("r21");
+            var r22 = document.getElementById("r22");
+            if (r00.textContent == r01.textContent == r02.textContent == "X" || r10.textContent == r11.textContent == r12.textContent == "X" || r20.textContent == r21.textContent == r22.textContent == "X") {
+                element = "N";
+            }
+            else if (r00.textContent == r01.textContent == r02.textContent == "Y" || r10.textContent == r11.textContent == r12.textContent == "Y" || r20.textContent == r21.textContent == r22.textContent == "Y") {
+                element = "M"
+            }
+            else if (r00.textContent == r10.textContent == r20.textContent == "X" || r01.textContent == r11.textContent == r21.textContent == "X" || r02.textContent == r12.textContent == r22.textContent == "X") {
+                element = "N"
+            }
+            else if (r00.textContent == r10.textContent == r20.textContent == "Y" || r01.textContent == r11.textContent == r21.textContent == "Y" || r02.textContent == r12.textContent == r22.textContent == "Y") {
+                element = "M"
+            }
+            else if (r00.textContent == r11.textContent == r22.textContent == "X") {
+                element = "N"
+            }
+            else if (r00.textContent == r11.textContent == r22.textContent == "Y") {
+                element = "M"
+            }
+            else if (r02.textContent == r11.textContent == r20.textContent == "X") {
+                element = "N"
+            }
+            else if (r02.textContent == r11.textContent == r20.textContent == "Y") {
+                element = "M"
+            }
+        }
+        function updateParagraph(element) {
+            var paragraph = document.getElementsByClassName("result");
+            var reset = document.getElementById("reset");
+            if (element == "X") {
+                paragraph.textContent = "Player O turn";
+            } else if (element == "O") {
+                element.textContent = "Player X turn";
+            } else if (element == "N") {
+                element.textContent = "Player X won";
+                reset.disabled = false;
+            } else {
+                element.textContent = "Player Y won";
+                reset.disabled = false;
+            }
+        }
+    </script>
+    <h1 id="header">Tic Tac Toe</h1>
+    <div class="box">
+        <div class="row">
+            <input type="button" value="" id="r00" class="btn" onclick="myFunction('r00')">
+            <input type="button" id="r01" class="btn" onclick="myFunction()">
+            <input type="button" id="r02" class="btn" onclick="myFunction()">
+        </div>
+        <div class="row">
+            <input type="button" id="r10" class="btn" onclick="myFunction()">
+            <input type="button" id="r11" class="btn" onclick="myFunction()">
+            <input type="button" id="r12" class="btn" onclick="myFunction()">
+        </div>
+        <div class="row">
+            <input type="button" id="r20" class="btn" onclick="myFunction()">
+            <input type="button" id="r21" class="btn" onclick="myFunction()">
+            <input type="button" id="r22" class="btn" onclick="myFunction()">
+        </div>
+    </div>
+    <div class="result-container">
+        <p class="result">Player X turn</p>
+    </div>
+    <button id="reset" disabled style="text-align: center;">Reset</button>
 </body>
+
 </html>
