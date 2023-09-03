@@ -1,135 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>tic_tac_toe</title>
 
-    <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="style.css">
 
 </head>
-
 <body>
-    <script>
-        var x = true;
-        var o = false;
-
-        function myFunction(btnid) {
-            var button = document.getElementById(btnid);
-
-            if (x) {
-                button.value = "X";
-                button.disabled = true; // Disable the button after setting the value
-                conditionCheck("X");
-              //  updateParagraph("X");
-                x = false;
-                o = true;
-            } else {
-                button.value = "O";
-                button.disabled = true; // Disable the button after setting the value
-                conditionCheck("O");
-              //  updateParagraph("O");
-                x = true;
-                o = false;
-            }
-        }
-
-        function conditionCheck(val) {
-            var r00 = document.getElementById("r00");
-            var r01 = document.getElementById("r01");
-            var r02 = document.getElementById("r02");
-            var r10 = document.getElementById("r10");
-            var r11 = document.getElementById("r11");
-            var r12 = document.getElementById("r12");
-            var r20 = document.getElementById("r20");
-            var r21 = document.getElementById("r21");
-            var r22 = document.getElementById("r22");
-            var buttons = [
-                [r00, r01, r02],
-                [r10, r11, r12],
-                [r20, r21, r22],
-                [r00, r10, r20],
-                [r01, r11, r21],
-                [r02, r12, r22],
-                [r00, r11, r22],
-                [r02, r11, r20]
-            ];
-
-            for (var i = 0; i < buttons.length; i++) {
-                var [btn1, btn2, btn3] = buttons[i];
-                if (btn1.value === btn2.value && btn2.value === btn3.value) {
-                    if (btn1.value === "X") {
-                        updateParagraph("N"); // Player X wins
-                    } else if (btn1.value === "O") {
-                        updateParagraph("M"); // Player O wins
-                    }
-                    return; // Exit the loop if we have a winner
-                }
-                else{
-                    updateParagraph(val); 
-                }
-            }
-
-            // Check for a draw
-            var draw = true;
-            for (var i = 0; i < buttons.length; i++) {
-                for (var j = 0; j < buttons[i].length; j++) {
-                    if (buttons[i][j].value === "") {
-                        draw = false;
-                        break;
-                    }
-                }
-            }
-
-            if (draw) {
-                updateParagraph("D"); // It's a draw
-            }
-        }
-
-
-        function updateParagraph(element) {
-            var el = element;
-            var paragraph = document.getElementById("p1");
-            var reset = document.getElementById("reset");
-
-            if (el === "X") {
-                paragraph.textContent = "Player O's turn";
-            } else if (el === "O") {
-                paragraph.textContent = "Player X's turn";
-            } else if (el === "N") {
-                paragraph.textContent = "Player X won";
-                reset.disabled = false;
-            } else if (el === "M") {
-                paragraph.textContent = "Player O won";
-                reset.disabled = false;
-            }
-        }
-    </script>
-    <h1 id="header">Tic Tac Toe</h1>
-    <div class="box">
-        <div class="row">
-            <input type="button" value="" id="r00" class="btn" onclick="myFunction('r00')">
-            <input type="button" value="" id="r01" class="btn" onclick="myFunction('r01')">
-            <input type="button" value="" id="r02" class="btn" onclick="myFunction('r02')">
-        </div>
-        <div class="row">
-            <input type="button" value="" id="r10" class="btn" onclick="myFunction('r10')">
-            <input type="button" value="" id="r11" class="btn" onclick="myFunction('r11')">
-            <input type="button" value="" id="r12" class="btn" onclick="myFunction('r12')">
-        </div>
-        <div class="row">
-            <input type="button" value="" id="r20" class="btn" onclick="myFunction('r20')">
-            <input type="button" value="" id="r21" class="btn" onclick="myFunction('r21')">
-            <input type="button" value="" id="r22" class="btn" onclick="myFunction('r22')">
-        </div>
-    </div>
-    <div class="result-container">
-        <p class="result" id="p1">Player X's turn</p>
-    </div>
-    <div class="rst1">
-        <button id="reset" disabled>Reset</button>
-    </div>
+  <h1>hello</h1>
 </body>
-
 </html>
